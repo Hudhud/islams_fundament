@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../data/content_data.dart';
-import 'subtopic_list_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:islams_fundament/providers/content_provider.dart';
+import 'package:islams_fundament/screens/detail_screen.dart';
+import 'package:islams_fundament/screens/subtopic_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,8 +17,12 @@ class HomeScreen extends StatelessWidget {
     Icons.access_time_filled,
   ];
 
+  static const Set<String> _directOpenCategories = {'Allah', 'Profeterne'};
+
   @override
   Widget build(BuildContext context) {
+    final contentProvider = Provider.of<ContentProvider>(context);
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -83,59 +89,86 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.all(16.0),
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16.0,
-                  mainAxisSpacing: 16.0,
-                  childAspectRatio: 1.1,
-                ),
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  final category = islamicContent[index];
-                  return Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                SubTopicListScreen(categoryIndex: index),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            categoryIcons[index],
-                            size: 48,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                          const SizedBox(height: 16),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Text(
-                              category.name,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleLarge?.copyWith(fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }, childCount: islamicContent.length),
-              ),
-            ),
+            _buildContent(context, contentProvider),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, ContentProvider provider) {
+    if (provider.isLoading) {
+      return const SliverFillRemaining(
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    if (provider.error != null) {
+      return SliverFillRemaining(child: Center(child: Text(provider.error!)));
+    }
+
+    final categories = provider.categories;
+
+    return SliverPadding(
+      padding: const EdgeInsets.all(16.0),
+      sliver: SliverGrid(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16.0,
+          mainAxisSpacing: 16.0,
+          childAspectRatio: 1.1,
+        ),
+        delegate: SliverChildBuilderDelegate((context, index) {
+          final category = categories[index];
+          return Card(
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              onTap: () {
+                final name = category.name.trim();
+                final shouldOpenDetail =
+                    _directOpenCategories.contains(name) &&
+                    category.topics.isNotEmpty;
+                if (shouldOpenDetail) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          DetailScreen(subtopic: category.topics.first),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SubTopicListScreen(category: category),
+                    ),
+                  );
+                }
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    categoryIcons[index % categoryIcons.length],
+                    size: 48,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      category.name,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.titleLarge?.copyWith(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }, childCount: categories.length),
       ),
     );
   }

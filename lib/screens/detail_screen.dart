@@ -52,7 +52,16 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        // Dansk tekst
+                        if (page.pageTitle != null &&
+                            page.pageTitle!.isNotEmpty) ...[
+                          Text(
+                            page.pageTitle!,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headlineSmall
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 24.0),
+                        ],
                         if (page.text != null)
                           Text(
                             page.text!,

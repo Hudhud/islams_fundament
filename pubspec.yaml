@@ -1,5 +1,5 @@
 name: islams_fundament
-description: "En Flutter app til at lære om Islam og dets grundlæggende principper."
+description: "En app til at lære om Islam og dets grundlæggende principper."
 publish_to: "none"
 version: 1.0.0+1
 
@@ -11,19 +11,34 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   audioplayers: ^6.5.0
+  provider: ^6.1.5
+  go_router: ^12.1.3
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  animations: ^2.0.11
+  adhan: ^2.0.0
+  geolocator: ^10.1.0
+  shared_preferences: ^2.2.2
+  sqflite: ^2.3.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_symbol.png"
+
 flutter:
   uses-material-design: true
-
   assets:
     - assets/audio/
     - assets/images/
     - assets/fonts/
+    - assets/data/
 
   fonts:
     - family: DroidNaskh

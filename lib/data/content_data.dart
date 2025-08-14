@@ -1,3 +1,5 @@
+// lib/data/content_data.dart
+
 import 'models/category.dart';
 import 'models/subtopic.dart';
 import 'models/content_page.dart';
@@ -10,6 +12,7 @@ final List<Category> islamicContent = [
         title: '13 Egenskaber',
         pages: [
           ContentPage(
+            pageTitle: "1. Eksistens (Al-Wujud)",
             text:
                 'Før Allah skabte himlen, tronen, stedet, tiden og alle andre skabninger, eksisterede Han uden dem, og Han eksisterer nu som han altid har gjort, da Han ikke forandrer Sig. Ergo eksisterer Allah uden tid og sted, da de er skabt af Ham. \n\nProfeten, må Allah ophøje hans rang, sagde:',
             arabicText: 'كَانَ اللهُ وَلَمْ يَكُنْ شَيْءٌ غَيْرُهُ',
@@ -17,6 +20,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Allah eksisterede i al evighed og der var intet andet end Ham", berettet af Al-Bukhariy.',
           ),
           ContentPage(
+            pageTitle: "2. Énhed (Al-Wahdaniyyah)",
             text:
                 'Allah er Én og har ingen partner i Sin guddommelighed. Han er Én i Sit selv, Én i Sine egenskaber og Én i Sine handlinger.\n\nAllah, være ophøjet, sagde i Surat Muhammad, vers 19:',
             arabicText: 'فَاعْلَمْ أَنَّهُ لَا إِلَٰهَ إِلَّا اللهُ',
@@ -24,6 +28,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Vid (Oh Muhammad), at Han (Allah) er den eneste Gud".',
           ),
           ContentPage(
+            pageTitle: "3. Evighed (Al-Qidam)",
             text:
                 'Allah har ingen begyndelse på Sin eksistens og intet andet end Ham er evigt. Han eksisterede før Han skabte alle skabningerne som f.eks. tid og sted.\n\nProfeten, må Allah ophøje hans rang, sagde:',
             arabicText: 'كَانَ اللهُ وَلَمْ يَكُنْ شَيْءٌ غَيْرُهُ',
@@ -31,6 +36,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Allah eksisterede i al evighed og der var intet andet end Ham", berettet af Al-Bukhariy.',
           ),
           ContentPage(
+            pageTitle: "4. Uophørlighed (Al-Baqa')",
             text:
                 'Allah er uophørlig dvs. Han ingen slutning har på Sin eksistens. Han forgår ikke, ej heller udslettes Han.\n\nAllah, være ophøjet, sagde i Surat Al-Hadid, vers 3:',
             arabicText: 'هُوَ الأَوَّلُ وَالآخِرُ',
@@ -38,6 +44,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Han er Al-Awwal (Den evige) og Al-Akhir (Den uophørlige)".',
           ),
           ContentPage(
+            pageTitle: "5. Uafhængighed (Al-Qiyam bin-Nafs)",
             text:
                 'Allah har ikke brug for nogen eller noget, mens alle skabninger har brug for Ham.\n\nAllah, være ophøjet, sagde i Surat Al-Ikhlas, vers 2:',
             arabicText: 'اللهُ الصَّمَدُ',
@@ -45,12 +52,14 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Allah har ikke brug for nogen eller noget, mens alt har brug for Ham".',
           ),
           ContentPage(
+            pageTitle: "6. Almagt (Al-Qudrah)",
             text:
                 'Allah magter alt, dvs. Han formår alt, hvad Han vil.\n\nAllah, være ophøjet, sagde i Surat Al-Mulk, vers 1:',
             arabicText: 'وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ',
             translationText: 'hvilket betyder: \n"Og Han magter alting".',
           ),
           ContentPage(
+            pageTitle: "7. Vilje (Al-Iradah)",
             text:
                 'Alt i universet sker med Allahs vilje. Intet sker mod Hans vilje.\n\nAbou Dawoud har berettet i sin ”Sunan”, at profeten, må Allah ophøje hans rang, lærte nogle af sine døtre at sige:',
             arabicText: 'مَا شَاءَ اللَّهُ كَانَ وَمَا لَمْ يَشَأْ لَمْ يَكُنْ',
@@ -58,6 +67,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Det, som Allah vil have skal ske, vil ske, og det, som Han ikke vil have skal ske, vil ikke ske".',
           ),
           ContentPage(
+            pageTitle: "8. Alvidenhed (Al-`Ilm)",
             text:
                 'Allah er vidende om alt før det sker. Intet er skjult for Ham.\n\nAllah, være ophøjet, sagde i Surat Al-Anfal, vers 75:',
             arabicText: 'إِنََّ اللهَ بِكُلِّ شَيْءٍ عَلِيمٌ',
@@ -65,6 +75,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Sandelig er Allah velvidende om alt".',
           ),
           ContentPage(
+            pageTitle: "9. Alhørenhed (As-Sam`)",
             text:
                 'Allah hører alt uden ører eller andre redskaber.\n\nِAllah, være ophøjet, sagde i Surat Ash-Shura, vers 11:',
             arabicText: 'وَهُوَ السَّمِيعُ الْبَصِيرُ',
@@ -72,6 +83,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Og Han er Den althørende og Den altseende".',
           ),
           ContentPage(
+            pageTitle: "10. Alseenhed (Al-Basar)",
             text:
                 'Allah ser alt uden øjne eller andre redskaber.\n\nAllah, være ophøjet, sagde i Surat Ash-Shura, vers 11:',
             arabicText: 'وَهُوَ السَّمِيعُ الْبَصِيرُ',
@@ -79,6 +91,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Og Han er Den althørende og Den altseende".',
           ),
           ContentPage(
+            pageTitle: "11. Liv (Al-Hayah)",
             text:
                 'Allah er beskrevet med et evigt liv, der ikke er med sjæl, kød, blod eller andet.\n\n"Allah, være ophøjet, sagde i Surat Al-Baqarah, vers 255:',
             arabicText: 'اللهُ لاَ إِلَٰهَ إِلاَّ هُوَ الْحَيُّ',
@@ -86,6 +99,7 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Allah, der er ingen anden Gud end Ham. Han er Al-Hayy (Den, der er beskrevet med et evigt liv)".',
           ),
           ContentPage(
+            pageTitle: "12. Tale (Al-Kalam)",
             text:
                 'Allahs tale er ikke med lyd, bogstaver eller sprog, og den ligner ikke vores tale. Det, der står i koranen på arabisk, er et udtryk for Allahs evige tale.\n\nAllah, være ophøjet, sagde i Surat An-Nisaa\', vers 164:',
             arabicText: 'وَكَلَّمَ اللهُ مُوسَى تَكْلِيمًا',
@@ -93,6 +107,8 @@ final List<Category> islamicContent = [
                 'hvilket betyder: \n"Og Allah talte (med Sin evige tale) til Musa".',
           ),
           ContentPage(
+            pageTitle:
+                "13. Ulighed med det skabte (Al-Mukhalafah lil-Hawadith)",
             text:
                 'Allah ligner ikke nogen eller noget. Hvad end man forestiller sig i sin fantasi og illusion, er Allah ikke lig det.\n\nAllah, være ophøjet, sagde Surat Ash-Shura vers 11:',
             arabicText: 'لَيْسَ كَمِثْلِهِ شَيْءٌ',
@@ -103,6 +119,7 @@ final List<Category> islamicContent = [
       ),
     ],
   ),
+  // ... resten af dit indhold er uændret ...
   Category(
     name: 'Profeterne',
     topics: [
