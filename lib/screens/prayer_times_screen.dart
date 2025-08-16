@@ -12,7 +12,6 @@ class PrayerTimesScreen extends StatefulWidget {
 }
 
 class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
-  // 1. Create an instance of the service
   final PrayerTimeService _prayerTimeService = PrayerTimeService();
   PrayerTimes? _prayerTimes;
   String? _errorMessage;
@@ -25,7 +24,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     });
   }
 
-  // 2. Create a simpler method to load data from the service
   Future<void> _loadPrayerTimes() async {
     try {
       final prayerTimes = await _prayerTimeService.getPrayerTimes();

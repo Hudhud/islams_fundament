@@ -53,7 +53,7 @@ class _HomeScreenPrayerWidgetState extends State<HomeScreenPrayerWidget> {
   }
 
   void _startTimer() {
-    _timer?.cancel(); // Cancel any existing timer
+    _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_prayerTimes == null) return;
 
