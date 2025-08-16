@@ -1,5 +1,3 @@
-// lib/data/content_data.dart
-
 import 'models/category.dart';
 import 'models/subtopic.dart';
 import 'models/content_page.dart';
@@ -119,7 +117,6 @@ final List<Category> islamicContent = [
       ),
     ],
   ),
-  // ... resten af dit indhold er uændret ...
   Category(
     name: 'Profeterne',
     topics: [
