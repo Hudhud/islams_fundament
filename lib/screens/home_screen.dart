@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:islams_fundament/providers/content_provider.dart';
 import 'package:islams_fundament/screens/detail_screen.dart';
 import 'package:islams_fundament/screens/subtopic_list_screen.dart';
+import 'package:islams_fundament/widgets/home_screen_prayer_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -88,6 +89,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SliverToBoxAdapter(child: HomeScreenPrayerWidget()),
             const SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(

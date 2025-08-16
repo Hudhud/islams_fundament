@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Denne app har brug for adgang til din placering for at beregne nøjagtige bønnetider.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Denne app har brug for adgang til din placering for at beregne nøjagtige bønnetider.</string>
 </dict>
 </plist>
