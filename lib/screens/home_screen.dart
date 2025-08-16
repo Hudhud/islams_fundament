@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:islams_fundament/providers/content_provider.dart';
 import 'package:islams_fundament/screens/detail_screen.dart';
@@ -8,16 +9,28 @@ import 'package:islams_fundament/screens/subtopic_list_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static const List<IconData> categoryIcons = [
-    Icons.brightness_high,
-    Icons.group,
-    Icons.favorite_border,
-    Icons.water_drop_outlined,
-    Icons.mosque_outlined,
-    Icons.access_time_filled,
-  ];
-
   static const Set<String> _directOpenCategories = {'Allah', 'Profeterne'};
+
+  static IconData _iconForCategory(String rawName) {
+    final iconName = rawName.trim().toLowerCase();
+
+    if (iconName.contains('profet') || iconName.contains('prophet')) {
+      return Icons.group;
+    }
+    if (iconName.contains('konvert') || iconName.contains('convert')) {
+      return Icons.favorite_border;
+    }
+    if (iconName.contains('wudu')) {
+      return Icons.water_drop_outlined;
+    }
+    if (iconName.contains('bøn')) {
+      return Icons.mosque_outlined;
+    }
+    if (iconName.contains('fast')) {
+      return Icons.access_time_filled;
+    }
+    return Icons.help_outline;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +115,6 @@ class HomeScreen extends StatelessWidget {
         child: Center(child: CircularProgressIndicator()),
       );
     }
-
     if (provider.error != null) {
       return SliverFillRemaining(child: Center(child: Text(provider.error!)));
     }
@@ -120,11 +132,11 @@ class HomeScreen extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate((context, index) {
           final category = categories[index];
+          final name = category.name.trim();
           return Card(
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: () {
-                final name = category.name.trim();
                 final shouldOpenDetail =
                     _directOpenCategories.contains(name) &&
                     category.topics.isNotEmpty;
@@ -148,16 +160,27 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    categoryIcons[index % categoryIcons.length],
-                    size: 48,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
+                  if (name.toLowerCase() == 'allah')
+                    SvgPicture.asset(
+                      'assets/icons/Allah_Name_icon.svg',
+                      width: 48,
+                      height: 48,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).colorScheme.secondary,
+                        BlendMode.srcIn,
+                      ),
+                    )
+                  else
+                    Icon(
+                      _iconForCategory(name),
+                      size: 48,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                   const SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      category.name,
+                      name,
                       textAlign: TextAlign.center,
                       style: Theme.of(
                         context,

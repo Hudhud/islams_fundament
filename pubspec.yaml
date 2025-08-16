@@ -39,6 +39,7 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/data/
+    - assets/icons/
 
   fonts:
     - family: DroidNaskh
