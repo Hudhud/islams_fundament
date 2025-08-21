@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:islams_fundament/widgets/home_screen_questions_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:islams_fundament/providers/content_provider.dart';
 import 'package:islams_fundament/screens/detail_screen.dart';
@@ -90,6 +91,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SliverToBoxAdapter(child: HomeScreenPrayerWidget()),
+            const SliverToBoxAdapter(child: HomeScreenQandAWidget()),
             const SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(
